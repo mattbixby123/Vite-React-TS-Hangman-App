@@ -3,14 +3,17 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import useHangman from './hooks/useHangman';
-import useRobot from './hooks/useRobot';
 import GameDisplay from './components/GameDisplay';
 import GuessInput from './components/GuessInput';
 
 const dictionary = ['typescript', 'programming', 'robot', 'developer'];
 
 const App: React.FC = () => {
-    const { selectWord } = useRobot(dictionary);
+    // const { selectWord } = useRobot(dictionary);
+    const selectWord = () => {
+                const randomIndex = Math.floor(Math.random() * dictionary.length);
+                return dictionary[randomIndex];
+            };
     const [word, setWord] = useState<string>('');
 
     useEffect(() => {
